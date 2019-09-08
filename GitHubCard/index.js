@@ -31,19 +31,47 @@ const followersArray = [];
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
 */
-          function gitHub (){
-            let div = document.createElement('div');
-            let img = document.createElement('img');
-            let div2 = document.createElement('div');
-            let h3 = document.createElement('h3');
-            let Par1 = document.createElement('p');
-            let Par2 = document.createElement('p');
-            let Par3 = document.createElement('p');
-            let a = document.createElement('a');
-            let Par4= document.createElement('p');
-            let Par5= document.createElement('p');
-            let Par6 = document.createElement('p');
 
+          function cardMaker (response) {
+            //const {} = data;
+            const div = document.createElement('div');
+            div.setAttribute('class', 'card');
+            const img = document.createElement('img');
+            img.setAttribute('src', response.data.avatar_url);
+            const div2 = document.createElement('div');
+            div2.setAttribute('class', 'card-info');
+            const h3 = document.createElement('h3');
+            h3.setAttribute('class', 'name');
+            h3.textContent = response.data.name;
+            const p1 = document.createElement('p');
+            p1.setAttribute('class', 'username');
+            p1.textContent = response.data.login;
+            const p2 = document.createElement('p');
+            p2.textContent = 'Location: ' + response.data.location;
+            const p3 = document.createElement('p');
+            p3.textContent = "Profile: ";
+            const a = document.createElement('a');
+            a.setAttribute('href', response.data.url);
+            a.textContent = response.data.url;
+            const p4 = document.createElement('p');
+            p4.textContent = 'Followers: ' + response.data.followers_url;
+            const p5 = document.createElement('p');
+            p5.textContent = 'Following: ' + response.data.following_url;
+            const p6 = document.createElement('p');
+            p6.textContent = "Bio: " + response.data.bio;
+
+            div.appendChild(img);
+            div.appendChild(div2);
+            div2.appendChild(h3);
+            div2.appendChild(p1);
+            div2.appendChild(p2);
+            div2.appendChild(p3);
+            p3.appendChild(a);
+            div2.appendChild(p4);
+            div2.appendChild(p5);
+            div2.appendChild(p6);
+          
+            return div;
           }
 /*
 <div class="card">
