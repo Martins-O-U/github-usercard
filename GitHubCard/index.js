@@ -37,13 +37,14 @@ axios.get('https://api.github.com/users/Martins-O-U')
 */
 
 let followersArray = [];
-followersArray = ['osammy', 'oloruntobiAwoderu', 'tolls-3', 'luishrd', 'ojokure'];
+followersArray = ['osammy', 'oloruntobiAwoderu', 'tolls-3', 'luishrd', 'ojokure', 'AbelTedros'];
 const followerCards = followersArray.forEach(element => {
   axios.get ('https://api.github.com/users/' + element)
   .then(refs => {
     document.querySelector('.cards').appendChild(cardMaker(refs));
   })
   .catch(error => {
+    console.log(error.message)
   })
 })
 
